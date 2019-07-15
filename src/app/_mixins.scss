@@ -1,0 +1,168 @@
+@import "variables.scss";
+
+// Media queries //
+
+@mixin telefono() {
+  @media only screen and (min-width: #{$telefono}){
+    @content
+  }
+}
+
+@mixin telef-tablet() {
+  @media only screen and (min-width: #{$telef-tablet}) {
+    @content
+  }
+}
+
+@mixin tablet() {
+  @media only screen and (min-width: #{$tablet}){
+    @content
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (min-width: #{$desktop}){
+    @content
+  }
+}
+
+@mixin media-desde($width) {
+  @media only screen and (min-width: $width) {
+    @content
+  }
+}
+
+@mixin media-hasta($width) {
+  @media only screen and (max-width: $width) {
+    @content
+  }
+}
+
+
+@mixin telefonominmax() {
+  @media only screen and (min-width: #{$telefono}) and (max-width: #{$telef-tablet}){
+    @content
+  }
+}
+
+@mixin tabletominmax() {
+  @media only screen and (min-width: #{$telef-tablet}) and (max-width: #{$desktop}){
+    @content
+  }
+}
+
+
+//  Botones  //
+
+@mixin boton_principal($color) {
+  height: 48px;
+  width: 180px;
+  background-color: $color;
+  color: $blanco;
+  @include tamano_primario();
+  text-transform: uppercase;
+}
+
+@mixin boton_secundario ($color) {
+  height: 36px;
+  width: 127px;
+  background-color: $color;
+  color: $blanco;
+}
+
+@mixin icono_encabezado ($color) {
+  font-size: 70px;
+  color: $color;
+}
+
+@mixin box-sizing($box-model) {
+  box-sizing: $box-model;
+}
+
+// ----------------- Fuentes --------------- //
+
+@mixin tamano_primario() {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.25px;
+  line-height: 16px;
+}
+
+@mixin title() {
+  color: $negro_primario;
+  font-size: 30px;
+  letter-spacing: 0.28px;
+  line-height: 30px;
+}
+
+@mixin subtitle() {
+  margin-top: -20px;
+  color: #5F6368;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 20px;
+}
+
+@mixin titleCard() {
+  color: $negro_primario;
+  font-size: 20px;
+  letter-spacing: 0.15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+@mixin subtitleCard() {
+  color: $negro_primario;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 15px;
+}
+
+@mixin descripcion(){
+  flex-basis: 20%;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 16px;
+  color: $gris_claro;
+  text-transform: uppercase;
+}
+
+@mixin datos(){
+  flex-basis: 60%;
+  color: $negro_primario;
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+}
+
+// -------------- Fin fuentes --------------- //
+
+@mixin box-shadow() {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+@mixin card() {
+  @include box-shadow();
+  border-radius: 4px;
+}
+
+// Mixin para colocar una caja al rededor del elemento para
+// identificar el estado de la asistencia
+@mixin estado ($color){
+  color: white;
+  width: 130px;
+  text-align: center;
+  background-color: $color;
+  border-radius: 4px;
+}
+
+
+@mixin border-card($color) {
+  border: 1px solid $color;
+  border-radius: 4px;
+}
+
+
+
+

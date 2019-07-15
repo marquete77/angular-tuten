@@ -1,0 +1,73 @@
+@import "../mixins";
+@import "../variables";
+
+button {
+  width: 210px;
+}
+
+.img {
+  min-height: 900px;
+  background-image: url("../../assets/img/background-login.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: blur(20px);
+  overflow: hidden;
+}
+
+.login-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .login-form {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 550px;
+
+
+    .box {
+      width: 80%;
+      height: 450px;
+      padding: 2rem;
+      margin: 5rem auto 0 auto;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      @include border-card($linea);
+      transition: all .3s ease;
+      @include box-shadow();
+      align-items: center;
+      &:hover {
+        background-color: rgba(255, 255, 255, .3);
+      }
+
+      @include tablet() {
+        margin: 10rem auto 0 auto;
+        transition: all .3s ease;
+      }
+
+
+      .title {
+        height: 8rem;
+      }
+
+      .formControl {
+        flex: 1;
+        width: 100%;
+
+        mat-form-field {
+          width: 100%;
+          max-width: 350px;
+        }
+      }
+
+      button {
+        margin-top: 5rem;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,82 @@
+<div class="header">
+  <div class="clearfix "><h1>Administrador</h1>
+    <button mat-raised-button color="accent" id="logoutBtn" class="btn btn-warning" type="submit" (click)="logout()">
+      Logout
+    </button>
+  </div>
+
+
+</div>
+<div class="search">
+  <div class="space"></div>
+  <form class="search-bar" [formGroup]="form" (ngSubmit)="searchBookings()">
+    <div class="inputs">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput class="text" formControlName="email" type="email" placeholder="Correo del usuario">
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary" class="btn btn-warning" type="submit">Buscar</button>
+  </form>
+</div>
+<div class="body">
+  <div class="filters">
+    <div class=" input idbooking">
+      <mat-form-field appearance="outline">
+        <mat-label>Id</mat-label>
+        <input matInput class="filter" [(ngModel)]="searchTerm" (input)="setFilteredItems()" type="text"
+               placeholder="Filtrar por ID">
+      </mat-form-field>
+    </div>
+    <div class=" input min">
+      <mat-form-field appearance="outline">
+        <mat-label>Precio minimo</mat-label>
+        <input matInput class="filter" type="number" min="0" placeholder="Introduzca precio minimo" #minPrice>
+      </mat-form-field>
+    </div>
+    <div class=" input max">
+      <mat-form-field appearance="outline">
+        <mat-label>Precio maximo</mat-label>
+        <input matInput class="filter" type="number" min="0" placeholder="Introduzca precio maximo" #maxPrice>
+      </mat-form-field>
+    </div>
+
+    <div class="button-filter">
+      <button mat-raised-button color="primary" class="btn btn-outline-warning" id="priceFilter" type="button"
+              (click)="priceFilter(minPrice.value, maxPrice.value)">Filtrar
+      </button>
+    </div>
+  </div>
+
+  <div class="list">
+    <div *ngIf="bookings.length > 0 || firstSearch; else noResults">
+      <table class="table  mat-elevation-z8" id="list">
+        <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Cliente</th>
+          <th scope="col" *ngIf="mobile">Fecha de Creación</th>
+          <th scope="col" *ngIf="mobile">Dirección</th>
+          <th scope="col">Precio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{booking.bookingId}}</td>
+          <td>{{booking.tutenUserClient.firstName}} {{booking.tutenUserClient.lastName}}</td>
+          <td *ngIf="mobile">{{booking.bookingTime | date: 'dd-MM-yyyy'}}</td>
+          <td *ngIf="mobile">{{ booking.locationId.streetAddress }}</td>
+          <td>{{booking.bookingPrice}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #noResults>
+    <div class="item">
+      No se encontraron registros asociados a ese correo.
+    </div>
+  </ng-template>
+</div>
+
